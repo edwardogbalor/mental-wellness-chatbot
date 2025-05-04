@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { ScrollView, View, Text, StyleSheet, Platform, Animated } from 'react-native';
+import { Image } from 'react-native';
 
 export default function HomeScreen() {
 
@@ -21,8 +22,14 @@ export default function HomeScreen() {
     <Text style={styles.bannerText}>Who do you want to talk to?</Text>
 
     <View style={styles.row}>
-      <View style={styles.block} />
-      <View style={[styles.block, styles.blockRight]} />
+    <View style={styles.block}>
+    <Image source={require('../assets/Group1.png')} style={styles.icon} />
+    <Text style={styles.iconLabel}>AI</Text>
+  </View>
+  <View style={[styles.block, styles.blockRight]}>
+    <Image source={require('../assets/Group2.png')} style={styles.icon} />
+    <Text style={styles.iconLabel}>Other People</Text>
+  </View>
     </View>
   </Animated.View>
 </ScrollView>
@@ -78,5 +85,26 @@ const styles = StyleSheet.create({
 
   blockRight: {
     marginLeft: 20, // pushes second box to the right
+  },
+
+  icon: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginTop: 30,
+  },
+  
+  iconLabel: {
+    marginTop: 10,
+    fontSize: 20,
+    textAlign: 'center',
+    color: 'rgba(0, 0, 0, 0.5)',
+    fontWeight: '500',
+    fontFamily: Platform.select({
+      ios: 'Helvetica Neue',
+      android: 'sans-serif',
+      default: 'System',
+    }),
   },
 });
